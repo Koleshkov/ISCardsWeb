@@ -1,0 +1,47 @@
+﻿@page "/Profile"
+
+@using ISCardsWeb.Shared.Models
+@using ISCardsWeb.Client.Services.UserServices
+@using ISCardsWeb.Shared.Responses
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IUserService UserService;
+
+<div class="content_container">
+    <h3>Профиль</h3>
+    <div class="user_info">Фамилия: @User.LastName</div>
+    <div class="user_info">Имя: @User.FirstName</div>
+    <div class="user_info">Отчество: @User.MiddleName</div>
+    <div class="user_info">Организация: @User.Organization</div>
+    <div class="user_info">Подразделение: @User.Department</div>
+    <div class="user_info">Должность: @User.Position</div>
+    <div class="user_info">Номер телефона: @User.PhoneNumber</div>
+</div>
+
+
+@code {
+    public UserResponse User { get; set; } = new();
+
+    protected async override Task OnInitializedAsync()
+    {
+
+
+        var authenticationStateProvider = ((CustomAuthenticationStateProvider)AuthenticationStateProvider);
+        if (authenticationStateProvider!=null)
+        {
+            var identity = (await authenticationStateProvider.GetAuthenticationStateAsync()).User.Identity;
+            if (identity!=null)
+            {
+                string userName = identity.Name??"";
+
+                User = await UserService.GetUserByNameAsync(userName)??new UserResponse();
+
+
+            }
+
+            
+        }
+        
+        await base.OnInitializedAsync();
+    }
+}

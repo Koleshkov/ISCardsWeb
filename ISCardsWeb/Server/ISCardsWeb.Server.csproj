@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ISCardsWeb.Aplication\ISCardsWeb.Aplication.csproj" />
+    <ProjectReference Include="..\..\ISCardsWeb.Persistance\ISCardsWeb.Persistance.csproj" />
+    <ProjectReference Include="..\Client\ISCardsWeb.Client.csproj" />
+    <ProjectReference Include="..\Shared\ISCardsWeb.Shared.csproj" />
+  </ItemGroup>
+
+
+</Project>

@@ -1,0 +1,36 @@
+﻿@if (IsVisibale)
+{
+    <div class="background_container" />
+    <div class="error_container">
+        <div class="window_container">
+            <p class="title">@Title</p>
+            <ul class="error_list">
+                @foreach (var error in Errors)
+                {
+                    <li class="error_item">@error</li>
+                }
+            </ul>
+            <a class="btn btn-outline-secondary" @onclick="CloseAction">Закрыть</a>
+        </div>
+    </div>
+
+}
+
+
+
+@code {
+    [Parameter]
+    public string Title { get; set; } = "Title";
+
+    [Parameter]
+    public List<string> Errors { get; set; } = new();
+
+
+    [Parameter]
+    public bool IsVisibale { get; set; } = false;
+
+    public void CloseAction()
+    {
+        IsVisibale = false;
+    }
+}

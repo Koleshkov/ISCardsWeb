@@ -1,0 +1,33 @@
+﻿@page "/"
+@page "/Authentication/Login"
+@layout AuthorizeLayout
+
+@using ISCardsWeb.Client.PageModels
+
+@inject LoginPageModel PageModel;
+
+<div class="authorize_layout">
+    <EditForm Model="@PageModel.Request" class="auth_editform" OnValidSubmit="@(()=>PageModel.LoginAction())">
+        <DataAnnotationsValidator />
+        <label class="auth_form_title">Вход</label>
+        <ErrorList Errors="@PageModel.Errors" IsVisibale="PageModel.IsVisibleErrorList" Title="Ошибка" />
+        <Spinner IsVisible=@PageModel.IsVisibleSpinner/>
+        <div class="input_group">
+            <label class="input_title">Email:</label>
+            <InputText class="form-control" @bind-Value="@PageModel.Request.Email" />
+            <ValidationMessage For="@(()=>PageModel.Request.Email)" />
+        </div>
+        <div class="input_group">
+            <label class="input_title">Пароль:</label>
+            <InputText type="password" class="form-control" @bind-Value="@PageModel.Request.Password" />
+            <ValidationMessage For="@(()=>PageModel.Request.Password)" />
+        </div>
+        <div class="input_btn_group">
+            <a class="btn btn-secondary" href="/Authentication/Register">Регистрация</a>
+            <input type="submit" class="btn btn-warning" value="Войти" />
+        </div>
+    </EditForm>
+</div>
+
+
+

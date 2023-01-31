@@ -1,0 +1,14 @@
+﻿@if (IsVisible)
+{
+    <div class="background_spinner" />
+    <div class="container_spinner">
+        <div class="spinner">
+        </div>
+    </div>
+}
+
+
+@code {
+    [Parameter]
+    public bool IsVisible { get; set; }
+}

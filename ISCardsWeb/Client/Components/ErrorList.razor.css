@@ -1,0 +1,45 @@
+﻿.background_container{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background: #000;
+    opacity:0.4;
+}
+.error_container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.window_container {
+    background: #FFF;
+    border-radius: 10px;
+    padding: 20px;
+    margin:10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.title{
+    font-size:14pt;
+    font-weight:bold;
+
+}
+
+.error_list{
+    padding:0;
+}
+.error_item {
+    color: red;
+    list-style-type: none;
+    align-content:center;
+}

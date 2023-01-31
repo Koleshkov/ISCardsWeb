@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject NavigationManager NavigationManager;
+@inject AuthenticationStateProvider AuthStateProvider;
+
+<div class="navbar_container">
+
+    <a href="#" class="nabar_brand">
+        @Title
+    </a>
+
+
+    <div class="navbar_menu">
+        <span class="navbar_menu_username">@UserName</span>
+        <AuthorizeView>
+            <Authorized>
+                <a class="btn btn-primary" @onclick="LogoutAction">Выйти</a>
+            </Authorized>
+        </AuthorizeView>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; } = "Title";
+
+    [Parameter]
+    public string UserName { get; set; } = "";
+
+    private async Task LogoutAction()
+    {
+        var auth = (CustomAuthenticationStateProvider)AuthStateProvider;
+
+        await auth.MarkUserAsLoggedOutAsync();
+        NavigationManager.NavigateTo("/");
+    }
+}

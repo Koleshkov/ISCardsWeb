@@ -1,0 +1,28 @@
+﻿
+<div class="sidebar_body"></div>
+<div class="sidebar">
+    <div class="sidebar_menu">
+        <NavLink class="sidebar_menu_item" href="Profile" Match="NavLinkMatch.All">
+            <span class="oi oi-person"></span>
+            <span class="sidebar_menu_item_title">Профиль</span>
+        </NavLink>
+        <NavLink class="sidebar_menu_item" href="PassengerCardList">
+            <span class="oi oi-envelope-closed"></span>
+            <span class="sidebar_menu_item_title">Карты пассажира</span>
+        </NavLink>
+        <NavLink class="sidebar_menu_item" href="SafetyCardList">
+            <span class="oi oi-people"></span>
+            <span class="sidebar_menu_item_title">Карты фиксации</span>
+        </NavLink>
+        <NavLink class="sidebar_menu_item" href="Settings">
+            <span class="oi oi-wrench"></span>
+            <span class="sidebar_menu_item_title">Настройки</span>
+        </NavLink>
+    </div>
+</div>
+
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

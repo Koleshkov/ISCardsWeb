@@ -1,0 +1,61 @@
+﻿.sidebar_menu_item {
+    display: flex;
+    align-items: center;
+    color: aliceblue;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+    .sidebar_menu_item:hover {
+        color: #fff;
+        background-color: #4E4E50;
+        transition: 0.2s;
+    }
+
+    .sidebar_menu_item.logout:hover {
+        color: #fff;
+        background-color: #C74238;
+        transition: 0.2s;
+    }
+
+    .sidebar_menu_item.active {
+        background-color: #F6C344;
+        transition: 0.2s;
+    }
+
+    .sidebar_menu_item.logout.active {
+        color: #fff;
+        background-color: #EB4C42;
+        transition: 0.2s;
+    }
+
+
+.content_container{
+    padding:10px;
+}
+
+.auth_editform {
+    padding: 10px;
+    background-color: #ECECEC;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.validation_msg{
+    font-size:9pt;
+}
+
+
+@media (max-width:960px) {
+   
+
+    .sidebar_menu_item {
+        display:flex;
+        justify-content:center;
+        flex-direction:row;
+        padding:10px;
+        margin:10px;
+    }
+
+}

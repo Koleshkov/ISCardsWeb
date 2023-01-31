@@ -1,0 +1,64 @@
+﻿@page "/Authentication/Register"
+@layout AuthorizeLayout
+
+@using ISCardsWeb.Client.PageModels
+@using ISCardsWeb.Shared.Requests
+
+@inject RegisterPageModel PageModel
+
+
+
+<div class="authorize_layout">
+    <Spinner IsVisible="@PageModel.IsVisibleSpinner"/>
+    <EditForm Model="@PageModel.Request" class="auth_editform" OnValidSubmit="@PageModel.RegisterAction">
+        <DataAnnotationsValidator />
+        <label class="auth_form_title">Регистрация</label>
+        <ErrorList Errors="@PageModel.Errors" IsVisibale="PageModel.IsVisibleErrorList" Title="Ошибка" />
+        <MessageBox ButtonAction="PageModel.GoToLoginPage"
+                    ButtonTitle="Войти"
+                    Title="Подтверждение регистрации"
+                    IsVisibale="PageModel.IsVisibleMsgBox">
+            На ваш адрес "@PageModel.Request.Email" отправлено письмо с подверждением регистрации.
+            Пожалуйста проверьте почту.
+        </MessageBox>
+        <div class="input_group">
+            <label class="input_title">Фамилия:</label>
+            <InputText class="form-control" @bind-Value="@PageModel.Request.LastName" />
+            <ValidationMessage For="@(()=>PageModel.Request.LastName)" />
+        </div>
+        <div class="input_group">
+            <label class="input_title">Имя:</label>
+            <InputText class="form-control" @bind-Value="@PageModel.Request.FirstName" />
+            <ValidationMessage For="@(()=>PageModel.Request.FirstName)" />
+        </div>
+        <div class="input_group">
+            <label class="input_title">Отчество:</label>
+            <InputText class="form-control" @bind-Value="@PageModel.Request.MiddleName" />
+            <ValidationMessage For="@(()=>PageModel.Request.MiddleName)" />
+        </div>
+        <div class="input_group">
+            <label class="input_title">Email:</label>
+            <InputText class="form-control" @bind-Value="@PageModel.Request.Email" />
+            <ValidationMessage For="@(()=>PageModel.Request.Email)" />
+        </div>
+        <div class="input_group">
+            <label class="input_title">Пароль:</label>
+            <InputText type="password" class="form-control" @bind-Value="@PageModel.Request.Password" />
+            <ValidationMessage For="@(()=>PageModel.Request.Password)" />
+        </div>
+        <div class="input_group">
+            <label class="input_title">Подтверждение пароля:</label>
+            <InputText type="password" class="form-control" @bind-Value="@PageModel.Request.ConfirmPassword" />
+            <ValidationMessage For="@(()=>PageModel.Request.ConfirmPassword)" />
+        </div>
+        <div class="input_btn_group">
+            <a class="btn btn-secondary" href="/Authentication/Login">Назад</a>
+            <input type="submit" class="btn btn-warning" value="Зарегистрироваться" />
+        </div>
+
+    </EditForm>
+</div>
+
+
+
+
